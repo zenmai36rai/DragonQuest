@@ -25,7 +25,16 @@ Partial Class Form1
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.ButtonL = New System.Windows.Forms.Button()
+        Me.ButtonR = New System.Windows.Forms.Button()
+        Me.ButtonU = New System.Windows.Forms.Button()
+        Me.ButtonD = New System.Windows.Forms.Button()
+        Me.ButtonB = New System.Windows.Forms.Button()
+        Me.ButtonA = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'RichTextBox1
@@ -37,7 +46,7 @@ Partial Class Form1
         Me.RichTextBox1.Location = New System.Drawing.Point(13, 381)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ReadOnly = True
-        Me.RichTextBox1.Size = New System.Drawing.Size(775, 115)
+        Me.RichTextBox1.Size = New System.Drawing.Size(533, 115)
         Me.RichTextBox1.TabIndex = 1
         Me.RichTextBox1.Text = ""
         '
@@ -50,31 +59,126 @@ Partial Class Form1
         Me.RichTextBox2.Location = New System.Drawing.Point(13, 12)
         Me.RichTextBox2.Name = "RichTextBox2"
         Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(775, 121)
+        Me.RichTextBox2.Size = New System.Drawing.Size(617, 121)
         Me.RichTextBox2.TabIndex = 2
         Me.RichTextBox2.Text = ""
         '
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.DragonQuest.My.Resources.Resources.スライム
-        Me.PictureBox1.Location = New System.Drawing.Point(268, 139)
+        Me.PictureBox1.Location = New System.Drawing.Point(161, 139)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(233, 236)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
+        '
+        'ButtonL
+        '
+        Me.ButtonL.BackColor = System.Drawing.Color.Black
+        Me.ButtonL.ForeColor = System.Drawing.Color.White
+        Me.ButtonL.Location = New System.Drawing.Point(12, 32)
+        Me.ButtonL.Name = "ButtonL"
+        Me.ButtonL.Size = New System.Drawing.Size(30, 23)
+        Me.ButtonL.TabIndex = 3
+        Me.ButtonL.Text = "L"
+        Me.ButtonL.UseVisualStyleBackColor = False
+        '
+        'ButtonR
+        '
+        Me.ButtonR.BackColor = System.Drawing.Color.Black
+        Me.ButtonR.ForeColor = System.Drawing.Color.White
+        Me.ButtonR.Location = New System.Drawing.Point(48, 32)
+        Me.ButtonR.Name = "ButtonR"
+        Me.ButtonR.Size = New System.Drawing.Size(30, 23)
+        Me.ButtonR.TabIndex = 4
+        Me.ButtonR.Text = "R"
+        Me.ButtonR.UseVisualStyleBackColor = False
+        '
+        'ButtonU
+        '
+        Me.ButtonU.BackColor = System.Drawing.Color.Black
+        Me.ButtonU.ForeColor = System.Drawing.Color.White
+        Me.ButtonU.Location = New System.Drawing.Point(29, 3)
+        Me.ButtonU.Name = "ButtonU"
+        Me.ButtonU.Size = New System.Drawing.Size(30, 23)
+        Me.ButtonU.TabIndex = 5
+        Me.ButtonU.Text = "U"
+        Me.ButtonU.UseVisualStyleBackColor = False
+        '
+        'ButtonD
+        '
+        Me.ButtonD.BackColor = System.Drawing.Color.Black
+        Me.ButtonD.ForeColor = System.Drawing.Color.White
+        Me.ButtonD.Location = New System.Drawing.Point(29, 61)
+        Me.ButtonD.Name = "ButtonD"
+        Me.ButtonD.Size = New System.Drawing.Size(30, 23)
+        Me.ButtonD.TabIndex = 6
+        Me.ButtonD.Text = "D"
+        Me.ButtonD.UseVisualStyleBackColor = False
+        '
+        'ButtonB
+        '
+        Me.ButtonB.BackColor = System.Drawing.Color.Black
+        Me.ButtonB.ForeColor = System.Drawing.Color.White
+        Me.ButtonB.Location = New System.Drawing.Point(90, 61)
+        Me.ButtonB.Name = "ButtonB"
+        Me.ButtonB.Size = New System.Drawing.Size(30, 23)
+        Me.ButtonB.TabIndex = 7
+        Me.ButtonB.Text = "B"
+        Me.ButtonB.UseVisualStyleBackColor = False
+        '
+        'ButtonA
+        '
+        Me.ButtonA.BackColor = System.Drawing.Color.Black
+        Me.ButtonA.ForeColor = System.Drawing.Color.White
+        Me.ButtonA.Location = New System.Drawing.Point(128, 61)
+        Me.ButtonA.Name = "ButtonA"
+        Me.ButtonA.Size = New System.Drawing.Size(30, 23)
+        Me.ButtonA.TabIndex = 8
+        Me.ButtonA.Text = "A"
+        Me.ButtonA.UseVisualStyleBackColor = False
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.DarkRed
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.ButtonA)
+        Me.Panel1.Controls.Add(Me.ButtonU)
+        Me.Panel1.Controls.Add(Me.ButtonB)
+        Me.Panel1.Controls.Add(Me.ButtonR)
+        Me.Panel1.Controls.Add(Me.ButtonD)
+        Me.Panel1.Controls.Add(Me.ButtonL)
+        Me.Panel1.Location = New System.Drawing.Point(580, 389)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(161, 111)
+        Me.Panel1.TabIndex = 9
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(8, 99)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(150, 12)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "Kyosuke Miyazawa 2024"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(806, 512)
+        Me.ClientSize = New System.Drawing.Size(753, 512)
         Me.Controls.Add(Me.RichTextBox2)
         Me.Controls.Add(Me.RichTextBox1)
         Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.Panel1)
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -82,4 +186,12 @@ Partial Class Form1
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents RichTextBox1 As RichTextBox
     Friend WithEvents RichTextBox2 As RichTextBox
+    Friend WithEvents ButtonL As Button
+    Friend WithEvents ButtonR As Button
+    Friend WithEvents ButtonU As Button
+    Friend WithEvents ButtonD As Button
+    Friend WithEvents ButtonB As Button
+    Friend WithEvents ButtonA As Button
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label1 As Label
 End Class
