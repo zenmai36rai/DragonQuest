@@ -59,13 +59,29 @@ Public Class Form1
         RichTextBox1.Text = BATTLE_MESSAGE
         RichTextBox2.Text = PLAYER_STATUS
     End Sub
+    Private CRITICAL_INT As Integer = 0
     Private DAMAGE_INT As Integer = 0
     Private DAMAGE_STR = "０"
     Private Sub CalcDamage(ByVal k As Integer)
         Static NUM() = {"０", "１", "２", "３", "４", "５", "６", "７", "８", "９"}
         DAMAGE_INT = Rnd(9) * k
+        CRITICAL_INT = Rnd(9) * 2
         DAMAGE_STR = NUM(DAMAGE_INT)
+        If (DAMAGE_INT = k) And (2 = CRITICAL_INT) Then
+            CRITICAL_INT = DAMAGE_INT * 2
+            DAMAGE_STR = NUM(CRITICAL_INT)
+        Else
+            CRITICAL_INT = 0
+        End If
     End Sub
+    Private Function DoEscape() As Boolean
+        DoEscape = True
+        Dim esc As Integer = Rnd(4) * 4
+        If 0 = esc Then
+            DoEscape = False
+        End If
+        Return DoEscape
+    End Function
 
     Private CURSOR_MEMORY = 0
     Private TURN_START = 0
@@ -80,10 +96,20 @@ Public Class Form1
             End If
             If ATTACK = 1 Then
                 Call CalcDamage(HERO_ST)
-                Dim msg1 As String = "ゆうしゃのこうげき　！        "
-                Dim msg2 As String = "スライムに" + DAMAGE_STR + "ダメージあたえた  "
-                ENEMY_HP = ENEMY_HP - DAMAGE_INT
-                Call WriteMessage(msg1, msg2)
+                If CRITICAL_INT = 0 Then
+                    Dim msg1 As String = "ゆうしゃのこうげき　！        "
+                    Dim msg2 As String = "スライムに" + DAMAGE_STR + "ダメージあたえた  "
+                    If DAMAGE_INT = 0 Then
+                        msg2 = "ミス！ダメージをあたえられない"
+                    End If
+                    ENEMY_HP = ENEMY_HP - DAMAGE_INT
+                    Call WriteMessage(msg1, msg2)
+                Else
+                    Dim msg1 As String = "かいしんのいちげき　！        "
+                    Dim msg2 As String = "スライムに" + DAMAGE_STR + "ダメージあたえた  "
+                    ENEMY_HP = ENEMY_HP - CRITICAL_INT
+                    Call WriteMessage(msg1, msg2)
+                End If
                 ATTACK = 0
                 Exit Sub
             End If
@@ -114,6 +140,10 @@ Public Class Form1
         If cmd = 1 Then ' にげる
             Dim msg1 As String = "ゆうしゃはにげた　！          "
             Dim msg2 As String = "しかし　まわりこまれた        "
+            If DoEscape() = True Then
+                msg2 = "うまく　にげのびた            "
+            End If
+
             Call WriteMessage(msg1, msg2)
         End If
     End Sub
