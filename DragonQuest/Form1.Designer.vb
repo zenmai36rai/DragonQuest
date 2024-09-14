@@ -31,7 +31,7 @@ Partial Class Form1
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.DragonQuest.My.Resources.Resources.スライム
-        Me.PictureBox1.Location = New System.Drawing.Point(270, 111)
+        Me.PictureBox1.Location = New System.Drawing.Point(268, 139)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(233, 236)
         Me.PictureBox1.TabIndex = 0
@@ -40,22 +40,24 @@ Partial Class Form1
         'RichTextBox1
         '
         Me.RichTextBox1.BackColor = System.Drawing.Color.Black
+        Me.RichTextBox1.Font = New System.Drawing.Font("ＭＳ ゴシック", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RichTextBox1.ForeColor = System.Drawing.Color.White
-        Me.RichTextBox1.Location = New System.Drawing.Point(13, 353)
+        Me.RichTextBox1.Location = New System.Drawing.Point(13, 381)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ReadOnly = True
-        Me.RichTextBox1.Size = New System.Drawing.Size(775, 143)
+        Me.RichTextBox1.Size = New System.Drawing.Size(775, 115)
         Me.RichTextBox1.TabIndex = 1
         Me.RichTextBox1.Text = ""
         '
         'RichTextBox2
         '
         Me.RichTextBox2.BackColor = System.Drawing.Color.Black
+        Me.RichTextBox2.Font = New System.Drawing.Font("ＭＳ ゴシック", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RichTextBox2.ForeColor = System.Drawing.Color.White
-        Me.RichTextBox2.Location = New System.Drawing.Point(13, 15)
+        Me.RichTextBox2.Location = New System.Drawing.Point(13, 12)
         Me.RichTextBox2.Name = "RichTextBox2"
         Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(775, 90)
+        Me.RichTextBox2.Size = New System.Drawing.Size(775, 121)
         Me.RichTextBox2.TabIndex = 2
         Me.RichTextBox2.Text = ""
         '
