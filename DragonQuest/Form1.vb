@@ -261,12 +261,14 @@ Public Class Form1
         SCENE_STATE = ss
         If SCENE_STATE = MAP_SCENE Then
             PictureBoxMap.Visible = True
+            PictureBoxHero.Visible = True
             PictureBoxMonster.Visible = False
             RichTextBox1.Visible = False
         End If
         If SCENE_STATE = BATTLE_SCENE Then
             InitBattle()
             PictureBoxMap.Visible = False
+            PictureBoxHero.Visible = False
             PictureBoxMonster.Visible = True
             RichTextBox1.Visible = True
         End If
