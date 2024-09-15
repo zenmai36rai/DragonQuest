@@ -186,6 +186,7 @@ Partial Class Form1
         Me.ButtonBattle.TabIndex = 11
         Me.ButtonBattle.Text = "Battle"
         Me.ButtonBattle.UseVisualStyleBackColor = True
+        Me.ButtonBattle.Visible = False
         '
         'ButtonMap
         '
@@ -195,6 +196,7 @@ Partial Class Form1
         Me.ButtonMap.TabIndex = 12
         Me.ButtonMap.Text = "Map"
         Me.ButtonMap.UseVisualStyleBackColor = True
+        Me.ButtonMap.Visible = False
         '
         'Form1
         '

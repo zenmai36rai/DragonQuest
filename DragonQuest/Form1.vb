@@ -22,6 +22,10 @@ Public Class Form1
     Private CURSOR_POS = 0
     Private BATTLE_MESSAGE As String
 
+    '地図画面でのキャラ座標
+    Private HERO_POSITION_X = 0
+    Private HERO_POSITION_Y = 0
+
     'キャラステータス
     Private HERO_HP = 99
     Private HERO_MP = 99
@@ -37,6 +41,12 @@ Public Class Form1
 
     Private ENEMY_HP = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Call RenderMessage()
+        SceneChange(SCENE_STATE)
+    End Sub
+    Private WINNER_FLAG = False
+    Private Sub InitBattle()
+        WINNER_FLAG = False
         Dim msg1 As String = "スライムがあらわれた　！      "
         Dim msg2 As String = ""
         Call WriteMessage(msg1, msg2)
@@ -140,6 +150,7 @@ Public Class Form1
                     Dim msg1 As String = "スライムをやっつけた　！      "
                     Dim msg2 As String = "                             "
                     Call WriteMessage(msg1, msg2)
+                    WINNER_FLAG = True
                 End If
                 DEFFENCE = 0
                 Exit Sub
@@ -184,6 +195,9 @@ Public Class Form1
     End Sub
     Private Sub ClickButtons(ByVal key As Integer, ByVal ss As Integer)
         If ss = BATTLE_SCENE Then
+            If key = KEY_A And WINNER_FLAG Then
+                SceneChange(MAP_SCENE)
+            End If
             If key = KEY_A Then
                 BattleTurn(CURSOR_POS)
             End If
@@ -225,10 +239,12 @@ Public Class Form1
             g.DrawImage(bmp, HERO_POSITION_X, HERO_POSITION_Y)
             g.Dispose()
             PictureBoxMap.Image = bmp
+            Dim r = Rnd() * 24
+            If r < 2 Then
+                SceneChange(BATTLE_SCENE)
+            End If
         End If
     End Sub
-    Private HERO_POSITION_X = 0
-    Private HERO_POSITION_Y = 0
     Private Sub ButtonD_Click(sender As Object, e As EventArgs) Handles ButtonD.Click
         ClickButtons(KEY_DOWN, SCENE_STATE)
     End Sub
@@ -249,6 +265,7 @@ Public Class Form1
             RichTextBox1.Visible = False
         End If
         If SCENE_STATE = BATTLE_SCENE Then
+            InitBattle()
             PictureBoxMap.Visible = False
             PictureBoxMonster.Visible = True
             RichTextBox1.Visible = True
