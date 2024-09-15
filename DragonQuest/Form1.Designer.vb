@@ -24,7 +24,6 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ButtonL = New System.Windows.Forms.Button()
         Me.ButtonR = New System.Windows.Forms.Button()
         Me.ButtonU = New System.Windows.Forms.Button()
@@ -33,8 +32,11 @@ Partial Class Form1
         Me.ButtonA = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RichTextBox1
@@ -46,7 +48,7 @@ Partial Class Form1
         Me.RichTextBox1.Location = New System.Drawing.Point(13, 381)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ReadOnly = True
-        Me.RichTextBox1.Size = New System.Drawing.Size(533, 115)
+        Me.RichTextBox1.Size = New System.Drawing.Size(552, 115)
         Me.RichTextBox1.TabIndex = 1
         Me.RichTextBox1.Text = ""
         '
@@ -59,18 +61,9 @@ Partial Class Form1
         Me.RichTextBox2.Location = New System.Drawing.Point(13, 12)
         Me.RichTextBox2.Name = "RichTextBox2"
         Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(617, 121)
+        Me.RichTextBox2.Size = New System.Drawing.Size(552, 121)
         Me.RichTextBox2.TabIndex = 2
         Me.RichTextBox2.Text = ""
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.DragonQuest.My.Resources.Resources.スライム
-        Me.PictureBox1.Location = New System.Drawing.Point(161, 139)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(233, 236)
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
         '
         'ButtonL
         '
@@ -164,6 +157,25 @@ Partial Class Form1
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "Kyosuke Miyazawa 2024"
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.DragonQuest.My.Resources.Resources.地図
+        Me.PictureBox2.Location = New System.Drawing.Point(6, 6)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(568, 494)
+        Me.PictureBox2.TabIndex = 10
+        Me.PictureBox2.TabStop = False
+        Me.PictureBox2.Visible = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.DragonQuest.My.Resources.Resources.スライム
+        Me.PictureBox1.Location = New System.Drawing.Point(161, 139)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(233, 236)
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -174,11 +186,13 @@ Partial Class Form1
         Me.Controls.Add(Me.RichTextBox1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.PictureBox2)
         Me.Name = "Form1"
         Me.Text = "Form1"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -194,4 +208,5 @@ Partial Class Form1
     Friend WithEvents ButtonA As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
+    Friend WithEvents PictureBox2 As PictureBox
 End Class
