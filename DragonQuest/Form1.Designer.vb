@@ -32,11 +32,13 @@ Partial Class Form1
         Me.ButtonA = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
+        Me.PictureBoxMonster = New System.Windows.Forms.PictureBox()
+        Me.ButtonBattle = New System.Windows.Forms.Button()
+        Me.ButtonMap = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBoxMonster, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RichTextBox1
@@ -157,24 +159,42 @@ Partial Class Form1
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "Kyosuke Miyazawa 2024"
         '
-        'PictureBox2
+        'PictureBoxMap
         '
-        Me.PictureBox2.Image = Global.DragonQuest.My.Resources.Resources.地図
-        Me.PictureBox2.Location = New System.Drawing.Point(6, 6)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(568, 494)
-        Me.PictureBox2.TabIndex = 10
-        Me.PictureBox2.TabStop = False
-        Me.PictureBox2.Visible = False
+        Me.PictureBoxMap.Image = Global.DragonQuest.My.Resources.Resources.地図
+        Me.PictureBoxMap.Location = New System.Drawing.Point(6, 6)
+        Me.PictureBoxMap.Name = "PictureBoxMap"
+        Me.PictureBoxMap.Size = New System.Drawing.Size(568, 494)
+        Me.PictureBoxMap.TabIndex = 10
+        Me.PictureBoxMap.TabStop = False
+        Me.PictureBoxMap.Visible = False
         '
-        'PictureBox1
+        'PictureBoxMonster
         '
-        Me.PictureBox1.Image = Global.DragonQuest.My.Resources.Resources.スライム
-        Me.PictureBox1.Location = New System.Drawing.Point(161, 139)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(233, 236)
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
+        Me.PictureBoxMonster.Image = Global.DragonQuest.My.Resources.Resources.スライム
+        Me.PictureBoxMonster.Location = New System.Drawing.Point(161, 139)
+        Me.PictureBoxMonster.Name = "PictureBoxMonster"
+        Me.PictureBoxMonster.Size = New System.Drawing.Size(233, 236)
+        Me.PictureBoxMonster.TabIndex = 0
+        Me.PictureBoxMonster.TabStop = False
+        '
+        'ButtonBattle
+        '
+        Me.ButtonBattle.Location = New System.Drawing.Point(585, 283)
+        Me.ButtonBattle.Name = "ButtonBattle"
+        Me.ButtonBattle.Size = New System.Drawing.Size(152, 27)
+        Me.ButtonBattle.TabIndex = 11
+        Me.ButtonBattle.Text = "Battle"
+        Me.ButtonBattle.UseVisualStyleBackColor = True
+        '
+        'ButtonMap
+        '
+        Me.ButtonMap.Location = New System.Drawing.Point(585, 316)
+        Me.ButtonMap.Name = "ButtonMap"
+        Me.ButtonMap.Size = New System.Drawing.Size(152, 27)
+        Me.ButtonMap.TabIndex = 12
+        Me.ButtonMap.Text = "Map"
+        Me.ButtonMap.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -182,22 +202,24 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(753, 512)
+        Me.Controls.Add(Me.ButtonMap)
+        Me.Controls.Add(Me.ButtonBattle)
         Me.Controls.Add(Me.RichTextBox2)
         Me.Controls.Add(Me.RichTextBox1)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.PictureBoxMonster)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.PictureBox2)
+        Me.Controls.Add(Me.PictureBoxMap)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBoxMonster, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBoxMonster As PictureBox
     Friend WithEvents RichTextBox1 As RichTextBox
     Friend WithEvents RichTextBox2 As RichTextBox
     Friend WithEvents ButtonL As Button
@@ -208,5 +230,7 @@ Partial Class Form1
     Friend WithEvents ButtonA As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
-    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents PictureBoxMap As PictureBox
+    Friend WithEvents ButtonBattle As Button
+    Friend WithEvents ButtonMap As Button
 End Class

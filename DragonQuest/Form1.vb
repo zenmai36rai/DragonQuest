@@ -1,5 +1,20 @@
 ﻿' Dragon Quest on Visual Basic Written by Kyosuke Miyazawa 2024
 Public Class Form1
+    'コントローラのボタン
+    Const KEY_UP = 1
+    Const KEY_DOWN = 2
+    Const KEY_LEFT = 3
+    Const KEY_RIGHT = 4
+    Const KEY_A = 5
+    Const KEY_B = 6
+
+    'ゲームシーン遷移
+    Const TITLE_SCENE = 1
+    Const MAP_SCENE = 2
+    Const BATTLE_SCENE = 3
+    Private SCENE_STATE = MAP_SCENE
+
+    'ウインドウ表示文字列群
     Private PLAYER_STATUS As String
     Private BATTLE_COMMAND() As String = {"　", "＞"}
     Private BC = BATTLE_COMMAND
@@ -7,6 +22,7 @@ Public Class Form1
     Private CURSOR_POS = 0
     Private BATTLE_MESSAGE As String
 
+    'キャラステータス
     Private HERO_HP = 99
     Private HERO_MP = 99
     Private HERO_ST = 3
@@ -148,8 +164,7 @@ Public Class Form1
         End If
     End Sub
     Private Sub ButtonA_Click(sender As Object, e As EventArgs) Handles ButtonA.Click
-        BattleTurn(CURSOR_POS)
-        Call RenderMessage()
+        ClickButtons(KEY_A, SCENE_STATE)
     End Sub
 
     Private Sub ButtonB_Click(sender As Object, e As EventArgs) Handles ButtonB.Click
@@ -157,26 +172,86 @@ Public Class Form1
     End Sub
 
     Private Sub ButtonL_Click(sender As Object, e As EventArgs) Handles ButtonL.Click
+        ClickButtons(KEY_LEFT, SCENE_STATE)
 
     End Sub
     Private Sub ButtonR_Click(sender As Object, e As EventArgs) Handles ButtonR.Click
+        ClickButtons(KEY_RIGHT, SCENE_STATE)
 
     End Sub
     Private Sub ButtonU_Click(sender As Object, e As EventArgs) Handles ButtonU.Click
-        If CURSOR_POS > 0 Then
-            CURSOR_POS = CURSOR_POS - 1
-        Else
-            CURSOR_POS = 3
+        ClickButtons(KEY_UP, SCENE_STATE)
+    End Sub
+    Private Sub ClickButtons(ByVal key As Integer, ByVal ss As Integer)
+        If ss = BATTLE_SCENE Then
+            If key = KEY_A Then
+                BattleTurn(CURSOR_POS)
+            End If
+            If key = KEY_UP Then
+                If CURSOR_POS > 0 Then
+                    CURSOR_POS = CURSOR_POS - 1
+                Else
+                    CURSOR_POS = 3
+                End If
+            End If
+            If key = KEY_DOWN Then
+                If CURSOR_POS < 3 Then
+                    CURSOR_POS = CURSOR_POS + 1
+                Else
+                    CURSOR_POS = 0
+                End If
+            End If
+            Call RenderMessage()
         End If
-        Call RenderMessage()
+        If ss = MAP_SCENE Then
+            If key = KEY_DOWN Then
+                HERO_POSITION_X = 0
+                HERO_POSITION_Y = -16
+            End If
+            If key = KEY_UP Then
+                HERO_POSITION_X = 0
+                HERO_POSITION_Y = 16
+            End If
+            If key = KEY_LEFT Then
+                HERO_POSITION_X = 16
+                HERO_POSITION_Y = 0
+            End If
+            If key = KEY_RIGHT Then
+                HERO_POSITION_X = -16
+                HERO_POSITION_Y = 0
+            End If
+            Dim bmp As Bitmap = New Bitmap(PictureBoxMap.Image)
+            Dim g = Graphics.FromImage(bmp)
+            g.DrawImage(bmp, HERO_POSITION_X, HERO_POSITION_Y)
+            g.Dispose()
+            PictureBoxMap.Image = bmp
+        End If
+    End Sub
+    Private HERO_POSITION_X = 0
+    Private HERO_POSITION_Y = 0
+    Private Sub ButtonD_Click(sender As Object, e As EventArgs) Handles ButtonD.Click
+        ClickButtons(KEY_DOWN, SCENE_STATE)
     End Sub
 
-    Private Sub ButtonD_Click(sender As Object, e As EventArgs) Handles ButtonD.Click
-        If CURSOR_POS < 3 Then
-            CURSOR_POS = CURSOR_POS + 1
-        Else
-            CURSOR_POS = 0
+    Private Sub ButtonBattle_Click(sender As Object, e As EventArgs) Handles ButtonBattle.Click
+        SceneChange(BATTLE_SCENE)
+    End Sub
+
+    Private Sub ButtonMap_Click(sender As Object, e As EventArgs) Handles ButtonMap.Click
+        SceneChange(MAP_SCENE)
+    End Sub
+
+    Private Sub SceneChange(ByVal ss As Integer)
+        SCENE_STATE = ss
+        If SCENE_STATE = MAP_SCENE Then
+            PictureBoxMap.Visible = True
+            PictureBoxMonster.Visible = False
+            RichTextBox1.Visible = False
         End If
-        Call RenderMessage()
+        If SCENE_STATE = BATTLE_SCENE Then
+            PictureBoxMap.Visible = False
+            PictureBoxMonster.Visible = True
+            RichTextBox1.Visible = True
+        End If
     End Sub
 End Class
