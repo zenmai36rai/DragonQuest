@@ -122,6 +122,7 @@
   <ItemGroup>
     <Content Include="スライム.png" />
     <Content Include="勇者.png" />
+    <Content Include="地図.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
