@@ -169,6 +169,7 @@ Public Class Form1
             Dim msg2 As String = "しかし　まわりこまれた        "
             If DoEscape() = True Then
                 msg2 = "うまく　にげのびた            "
+                WINNER_FLAG = True
             End If
 
             Call WriteMessage(msg1, msg2)
@@ -264,6 +265,7 @@ Public Class Form1
             PictureBoxHero.Visible = True
             PictureBoxMonster.Visible = False
             RichTextBox1.Visible = False
+            My.Computer.Audio.Stop()
             My.Computer.Audio.Play(My.Resources.DQ_Mastering00001, AudioPlayMode.BackgroundLoop)
         End If
         If SCENE_STATE = BATTLE_SCENE Then
@@ -273,6 +275,7 @@ Public Class Form1
             PictureBoxMonster.Visible = True
             RichTextBox1.Visible = True
             My.Computer.Audio.Stop()
+            My.Computer.Audio.Play(My.Resources.DQ_Battle_Mastering00001, AudioPlayMode.BackgroundLoop)
         End If
     End Sub
 End Class
