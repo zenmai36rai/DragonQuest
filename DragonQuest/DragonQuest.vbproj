@@ -126,6 +126,7 @@
     <Content Include="がいこつ.png" />
     <Content Include="まどうし.png" />
     <Content Include="スライム.png" />
+    <Content Include="ドラゴン.png" />
     <Content Include="勇者.png" />
     <Content Include="地図.png" />
   </ItemGroup>
