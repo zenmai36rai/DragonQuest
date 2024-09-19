@@ -49,6 +49,8 @@ Public Class Form1
     Private DAMAGE_STR = "０"
 
     Private MONSTER_ID = 1
+
+    Private EXP_COUNT = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call RenderMessage()
         SceneChange(SCENE_STATE)
@@ -63,7 +65,7 @@ Public Class Form1
         Call RenderMessage()
     End Sub
     Private Sub InitMonster(ByVal m As Integer)
-        If m = 1 Then
+        If m <= 1 Then
             ENEMY_HP = 4
             ENEMY_NAME = "スライム"
             PictureBoxMonster.Image = My.Resources.スライム
@@ -90,6 +92,9 @@ Public Class Form1
         Else
             MONSTER_ID = 4
         End If
+        While ((MONSTER_ID * 2) > EXP_COUNT)
+            MONSTER_ID -= 1
+        End While
     End Sub
     Private Sub CalcDisp()
         If HERO_HP < 0 Then
@@ -184,6 +189,7 @@ Public Class Form1
                     Dim msg2 As String = "                             "
                     Call WriteMessage(msg1, msg2)
                     WINNER_FLAG = True
+                    EXP_COUNT += 1
                 End If
                 DEFFENCE = 0
                 Exit Sub
