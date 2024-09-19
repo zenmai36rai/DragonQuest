@@ -67,16 +67,22 @@ Public Class Form1
             ENEMY_HP = 5
             ENEMY_NAME = "スライム"
             PictureBoxMonster.Image = My.Resources.スライム
-        Else
-            ENEMY_HP = 12
+        ElseIf m = 2 Then
+            ENEMY_HP = 9
             ENEMY_NAME = "まどうし"
             PictureBoxMonster.Image = My.Resources.まどうし
+        Else
+            ENEMY_HP = 10
+            ENEMY_NAME = "がいこつ"
+            PictureBoxMonster.Image = My.Resources.がいこつ
         End If
-        Dim next_monster = Rnd(9) * 3
-        If 2 <= next_monster Then
+        Dim next_monster = Rnd(9) * 6
+        If next_monster <= 2 Then
+            MONSTER_ID = 1
+        ElseIf next_monster <= 4 Then
             MONSTER_ID = 2
         Else
-            MONSTER_ID = 1
+            MONSTER_ID = 3
         End If
     End Sub
     Private Sub CalcDisp()
