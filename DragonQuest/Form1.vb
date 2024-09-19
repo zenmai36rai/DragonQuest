@@ -72,6 +72,12 @@ Public Class Form1
             ENEMY_NAME = "まどうし"
             PictureBoxMonster.Image = My.Resources.まどうし
         End If
+        Dim next_monster = Rnd(9) * 3
+        If 2 <= next_monster Then
+            MONSTER_ID = 2
+        Else
+            MONSTER_ID = 1
+        End If
     End Sub
     Private Sub CalcDisp()
         If HERO_HP < 0 Then
@@ -212,12 +218,6 @@ Public Class Form1
     Private Sub ClickButtons(ByVal key As Integer, ByVal ss As Integer)
         If ss = BATTLE_SCENE Then
             If key = KEY_A And WINNER_FLAG Then
-                Dim next_monster = Rnd(9) * 3
-                If 2 <= next_monster Then
-                    MONSTER_ID = 2
-                Else
-                    MONSTER_ID = 1
-                End If
                 SceneChange(MAP_SCENE)
             End If
             If key = KEY_A Then
