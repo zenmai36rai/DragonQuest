@@ -64,19 +64,19 @@ Public Class Form1
     End Sub
     Private Sub InitMonster(ByVal m As Integer)
         If m = 1 Then
-            ENEMY_HP = 5
+            ENEMY_HP = 4
             ENEMY_NAME = "スライム"
             PictureBoxMonster.Image = My.Resources.スライム
         ElseIf m = 2 Then
-            ENEMY_HP = 9
+            ENEMY_HP = 7
             ENEMY_NAME = "まどうし"
             PictureBoxMonster.Image = My.Resources.まどうし
         ElseIf m = 3 Then
-            ENEMY_HP = 10
+            ENEMY_HP = 9
             ENEMY_NAME = "がいこつ"
             PictureBoxMonster.Image = My.Resources.がいこつ
         Else
-            ENEMY_HP = 18
+            ENEMY_HP = 22
             ENEMY_NAME = "ドラゴン"
             PictureBoxMonster.Image = My.Resources.ドラゴン
         End If
