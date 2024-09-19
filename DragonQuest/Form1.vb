@@ -59,8 +59,8 @@ Public Class Form1
     End Sub
 
     Private Sub DrawMap()
-        Dim bmp As Bitmap = New Bitmap(My.Resources.地図)
-        Dim pb As Bitmap = New Bitmap(PictureBoxMap.Width, PictureBoxMap.Height)
+        Static bmp As Bitmap = New Bitmap(My.Resources.地図)
+        Static pb As Bitmap = New Bitmap(PictureBoxMap.Width, PictureBoxMap.Height)
         Dim g = Graphics.FromImage(pb)
         g.DrawImage(bmp, HERO_POSITION_X, HERO_POSITION_Y)
         g.Dispose()
