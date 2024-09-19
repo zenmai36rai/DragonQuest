@@ -47,18 +47,31 @@ Public Class Form1
     Private CRITICAL_INT As Integer = 0
     Private DAMAGE_INT As Integer = 0
     Private DAMAGE_STR = "０"
+
+    Private MONSTER_ID = 1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call RenderMessage()
         SceneChange(SCENE_STATE)
     End Sub
     Private WINNER_FLAG = False
     Private Sub InitBattle()
+        InitMonster(MONSTER_ID)
         WINNER_FLAG = False
         Dim msg1 As String = ENEMY_NAME + "があらわれた　！      "
         Dim msg2 As String = ""
         Call WriteMessage(msg1, msg2)
-        ENEMY_HP = 5
         Call RenderMessage()
+    End Sub
+    Private Sub InitMonster(ByVal m As Integer)
+        If m = 1 Then
+            ENEMY_HP = 5
+            ENEMY_NAME = "スライム"
+            PictureBoxMonster.Image = My.Resources.スライム
+        Else
+            ENEMY_HP = 12
+            ENEMY_NAME = "まどうし"
+            PictureBoxMonster.Image = My.Resources.まどうし
+        End If
     End Sub
     Private Sub CalcDisp()
         If HERO_HP < 0 Then
@@ -199,6 +212,12 @@ Public Class Form1
     Private Sub ClickButtons(ByVal key As Integer, ByVal ss As Integer)
         If ss = BATTLE_SCENE Then
             If key = KEY_A And WINNER_FLAG Then
+                Dim next_monster = Rnd(9) * 3
+                If 2 <= next_monster Then
+                    MONSTER_ID = 2
+                Else
+                    MONSTER_ID = 1
+                End If
                 SceneChange(MAP_SCENE)
             End If
             If key = KEY_A Then
