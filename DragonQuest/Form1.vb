@@ -23,8 +23,8 @@ Public Class Form1
     Private BATTLE_MESSAGE As String
 
     '地図画面でのキャラ座標
-    Private HERO_POSITION_X = 0
-    Private HERO_POSITION_Y = 0
+    Private HERO_POSITION_X = -496
+    Private HERO_POSITION_Y = -528
 
     'キャラステータス
     Private HERO_HP = 99
@@ -49,13 +49,24 @@ Public Class Form1
     Private DAMAGE_STR = "０"
 
     Private MONSTER_ID = 1
-
     Private EXP_COUNT = 0
+    Private WINNER_FLAG = False
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        DrawMap()
         Call RenderMessage()
         SceneChange(SCENE_STATE)
     End Sub
-    Private WINNER_FLAG = False
+
+    Private Sub DrawMap()
+        Dim bmp As Bitmap = New Bitmap(My.Resources.地図)
+        Dim pb As Bitmap = New Bitmap(PictureBoxMap.Width, PictureBoxMap.Height)
+        Dim g = Graphics.FromImage(pb)
+        g.DrawImage(bmp, HERO_POSITION_X, HERO_POSITION_Y)
+        g.Dispose()
+        PictureBoxMap.Image = pb
+    End Sub
+
     Private Sub InitBattle()
         InitMonster(MONSTER_ID)
         WINNER_FLAG = False
@@ -259,26 +270,18 @@ Public Class Form1
         End If
         If ss = MAP_SCENE Then
             If key = KEY_DOWN Then
-                HERO_POSITION_X = 0
-                HERO_POSITION_Y = -16
+                HERO_POSITION_Y -= 16
             End If
             If key = KEY_UP Then
-                HERO_POSITION_X = 0
-                HERO_POSITION_Y = 16
+                HERO_POSITION_Y += 16
             End If
             If key = KEY_LEFT Then
-                HERO_POSITION_X = 16
-                HERO_POSITION_Y = 0
+                HERO_POSITION_X += 16
             End If
             If key = KEY_RIGHT Then
-                HERO_POSITION_X = -16
-                HERO_POSITION_Y = 0
+                HERO_POSITION_X -= 16
             End If
-            Dim bmp As Bitmap = New Bitmap(PictureBoxMap.Image)
-            Dim g = Graphics.FromImage(bmp)
-            g.DrawImage(bmp, HERO_POSITION_X, HERO_POSITION_Y)
-            g.Dispose()
-            PictureBoxMap.Image = bmp
+            DrawMap()
             Dim r = Rnd() * 24
             If r < 2 Then
                 SceneChange(BATTLE_SCENE)
