@@ -32,6 +32,9 @@ Public Class Form1
     Private HERO_ST = 3
     Private HERO_DF = 3
 
+    Private HP_STR = "００"
+    Private MP_STR = "９９"
+
     Private MESSAGE_1 = ""
     Private MESSAGE_2 = ""
 
@@ -40,6 +43,10 @@ Public Class Form1
     Private DEFFENCE = 0
 
     Private ENEMY_HP = 0
+    Private ENEMY_NAME = "スライム"
+    Private CRITICAL_INT As Integer = 0
+    Private DAMAGE_INT As Integer = 0
+    Private DAMAGE_STR = "０"
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call RenderMessage()
         SceneChange(SCENE_STATE)
@@ -47,14 +54,12 @@ Public Class Form1
     Private WINNER_FLAG = False
     Private Sub InitBattle()
         WINNER_FLAG = False
-        Dim msg1 As String = "スライムがあらわれた　！      "
+        Dim msg1 As String = ENEMY_NAME + "があらわれた　！      "
         Dim msg2 As String = ""
         Call WriteMessage(msg1, msg2)
         ENEMY_HP = 5
         Call RenderMessage()
     End Sub
-    Private HP_STR = "００"
-    Private MP_STR = "９９"
     Private Sub CalcDisp()
         If HERO_HP < 0 Then
             Exit Sub
@@ -85,9 +90,6 @@ Public Class Form1
         RichTextBox1.Text = BATTLE_MESSAGE
         RichTextBox2.Text = PLAYER_STATUS
     End Sub
-    Private CRITICAL_INT As Integer = 0
-    Private DAMAGE_INT As Integer = 0
-    Private DAMAGE_STR = "０"
     Private Sub CalcDamage(ByVal k As Integer)
         Static NUM() = {"０", "１", "２", "３", "４", "５", "６", "７", "８", "９"}
         DAMAGE_INT = Rnd(9) * k
@@ -124,7 +126,7 @@ Public Class Form1
                 Call CalcDamage(HERO_ST)
                 If CRITICAL_INT = 0 Then
                     Dim msg1 As String = "ゆうしゃのこうげき　！        "
-                    Dim msg2 As String = "スライムに" + DAMAGE_STR + "ダメージあたえた  "
+                    Dim msg2 As String = ENEMY_NAME + "に" + DAMAGE_STR + "ダメージあたえた  "
                     If DAMAGE_INT = 0 Then
                         msg2 = "ミス！ダメージをあたえられない"
                     End If
@@ -132,7 +134,7 @@ Public Class Form1
                     Call WriteMessage(msg1, msg2)
                 Else
                     Dim msg1 As String = "かいしんのいちげき　！        "
-                    Dim msg2 As String = "スライムに" + DAMAGE_STR + "ダメージあたえた  "
+                    Dim msg2 As String = ENEMY_NAME + "に" + DAMAGE_STR + "ダメージあたえた  "
                     ENEMY_HP = ENEMY_HP - CRITICAL_INT
                     Call WriteMessage(msg1, msg2)
                 End If
@@ -142,12 +144,12 @@ Public Class Form1
             If DEFFENCE = 1 Then
                 If 0 < ENEMY_HP Then
                     Call CalcDamage(2)
-                    Dim msg1 As String = "スライムのこうげき　！        "
+                    Dim msg1 As String = ENEMY_NAME + "のこうげき　！        "
                     Dim msg2 As String = "ゆうしゃは" + DAMAGE_STR + "ダメージうけた    "
                     HERO_HP = HERO_HP - DAMAGE_INT
                     Call WriteMessage(msg1, msg2)
                 Else
-                    Dim msg1 As String = "スライムをやっつけた　！      "
+                    Dim msg1 As String = ENEMY_NAME + "をやっつけた　！      "
                     Dim msg2 As String = "                             "
                     Call WriteMessage(msg1, msg2)
                     WINNER_FLAG = True
