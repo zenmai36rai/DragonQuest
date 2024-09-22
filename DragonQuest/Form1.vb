@@ -13,6 +13,7 @@ Public Class Form1
     Const CASTLE_SCENE = 2
     Const MAP_SCENE = 3
     Const BATTLE_SCENE = 4
+    Const ENDING_SCENE = 5
     Private SCENE_STATE = TITLE_SCENE
 
     'ウインドウ表示文字列群
