@@ -13,7 +13,7 @@ Public Class Form1
     Const CASTLE_SCENE = 2
     Const MAP_SCENE = 3
     Const BATTLE_SCENE = 4
-    Private SCENE_STATE = CASTLE_SCENE
+    Private SCENE_STATE = TITLE_SCENE
 
     'ウインドウ表示文字列群
     Private PLAYER_STATUS As String
@@ -259,6 +259,11 @@ Public Class Form1
                 SceneChange(MAP_SCENE)
             End If
         End If
+        If ss = TITLE_SCENE Then
+            If key = KEY_A Then
+                SceneChange(CASTLE_SCENE)
+            End If
+        End If
         If ss = BATTLE_SCENE Then
             If key = KEY_A And WINNER_FLAG Then
                 SceneChange(MAP_SCENE)
@@ -316,20 +321,33 @@ Public Class Form1
 
     Private Sub SceneChange(ByVal ss As Integer)
         SCENE_STATE = ss
+        If SCENE_STATE = TITLE_SCENE Then
+            PictureBoxMap.Image = My.Resources.タイトル
+            PictureBoxMap.Visible = True
+            PictureBoxHero.Visible = False
+            PictureBoxMonster.Visible = False
+            RichTextBox1.Visible = False
+            RichTextBox2.Visible = False
+            My.Computer.Audio.Stop()
+            My.Computer.Audio.Play(My.Resources.DQ_Opening_Mastering00001, AudioPlayMode.BackgroundLoop)
+        End If
         If SCENE_STATE = CASTLE_SCENE Then
             InitCastle()
             PictureBoxMap.Visible = False
             PictureBoxHero.Visible = False
             PictureBoxMonster.Visible = True
             RichTextBox1.Visible = True
+            RichTextBox2.Visible = True
             My.Computer.Audio.Stop()
             My.Computer.Audio.Play(My.Resources.DQ_Castle_Mastering00001, AudioPlayMode.BackgroundLoop)
         End If
         If SCENE_STATE = MAP_SCENE Then
+            DrawMap()
             PictureBoxMap.Visible = True
             PictureBoxHero.Visible = True
             PictureBoxMonster.Visible = False
             RichTextBox1.Visible = False
+            RichTextBox2.Visible = True
             My.Computer.Audio.Stop()
             My.Computer.Audio.Play(My.Resources.DQ_Mastering00001, AudioPlayMode.BackgroundLoop)
         End If
@@ -339,6 +357,7 @@ Public Class Form1
             PictureBoxHero.Visible = False
             PictureBoxMonster.Visible = True
             RichTextBox1.Visible = True
+            RichTextBox2.Visible = True
             My.Computer.Audio.Stop()
             My.Computer.Audio.Play(My.Resources.DQ_Battle_Mastering00001, AudioPlayMode.BackgroundLoop)
         End If

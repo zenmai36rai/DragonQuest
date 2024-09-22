@@ -88,6 +88,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
+        '''</summary>
+        Friend ReadOnly Property DQ_Opening_Mastering00001() As System.IO.UnmanagedMemoryStream
+            Get
+                Return ResourceManager.GetStream("DQ_Opening_Mastering00001", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         '''</summary>
         Friend ReadOnly Property がいこつ() As System.Drawing.Bitmap
@@ -103,6 +112,16 @@ Namespace My.Resources
         Friend ReadOnly Property スライム() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("スライム", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        '''</summary>
+        Friend ReadOnly Property タイトル() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("タイトル", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
