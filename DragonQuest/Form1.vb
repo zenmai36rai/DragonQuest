@@ -10,9 +10,10 @@ Public Class Form1
 
     'ゲームシーン遷移
     Const TITLE_SCENE = 1
-    Const MAP_SCENE = 2
-    Const BATTLE_SCENE = 3
-    Private SCENE_STATE = MAP_SCENE
+    Const CASTLE_SCENE = 2
+    Const MAP_SCENE = 3
+    Const BATTLE_SCENE = 4
+    Private SCENE_STATE = CASTLE_SCENE
 
     'ウインドウ表示文字列群
     Private PLAYER_STATUS As String
@@ -56,6 +57,14 @@ Public Class Form1
         DrawMap()
         Call RenderMessage()
         SceneChange(SCENE_STATE)
+    End Sub
+
+    Private Sub InitCastle()
+        PictureBoxMonster.Image = My.Resources.王様
+        Dim msg1 As String = "よく来た勇者よ！　　　　　　　"
+        Dim msg2 As String = "ドラゴンを倒してこい！　　　　"
+        Call WriteMessage(msg1, msg2)
+        Call RenderMessage()
     End Sub
 
     Private Sub DrawMap()
@@ -245,6 +254,11 @@ Public Class Form1
         ClickButtons(KEY_UP, SCENE_STATE)
     End Sub
     Private Sub ClickButtons(ByVal key As Integer, ByVal ss As Integer)
+        If ss = CASTLE_SCENE Then
+            If key = KEY_A Then
+                SceneChange(MAP_SCENE)
+            End If
+        End If
         If ss = BATTLE_SCENE Then
             If key = KEY_A And WINNER_FLAG Then
                 SceneChange(MAP_SCENE)
@@ -302,6 +316,15 @@ Public Class Form1
 
     Private Sub SceneChange(ByVal ss As Integer)
         SCENE_STATE = ss
+        If SCENE_STATE = CASTLE_SCENE Then
+            InitCastle()
+            PictureBoxMap.Visible = False
+            PictureBoxHero.Visible = False
+            PictureBoxMonster.Visible = True
+            RichTextBox1.Visible = True
+            My.Computer.Audio.Stop()
+            My.Computer.Audio.Play(My.Resources.Castle_Mastering00001, AudioPlayMode.BackgroundLoop)
+        End If
         If SCENE_STATE = MAP_SCENE Then
             PictureBoxMap.Visible = True
             PictureBoxHero.Visible = True

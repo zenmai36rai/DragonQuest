@@ -63,6 +63,15 @@ Namespace My.Resources
         '''<summary>
         '''  System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
         '''</summary>
+        Friend ReadOnly Property Castle_Mastering00001() As System.IO.UnmanagedMemoryStream
+            Get
+                Return ResourceManager.GetStream("Castle_Mastering00001", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
+        '''</summary>
         Friend ReadOnly Property DQ_Battle_Mastering00001() As System.IO.UnmanagedMemoryStream
             Get
                 Return ResourceManager.GetStream("DQ_Battle_Mastering00001", resourceCulture)
