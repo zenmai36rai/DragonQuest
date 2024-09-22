@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Castle_Mastering00001" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\castle_mastering00001.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="DQ_Battle_Mastering00001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\dq_battle_mastering00001.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DQ_Castle_Mastering00001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\dq_castle_mastering00001.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="DQ_Mastering00001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\dq_mastering00001.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

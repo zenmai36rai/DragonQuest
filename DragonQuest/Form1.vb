@@ -62,7 +62,7 @@ Public Class Form1
     Private Sub InitCastle()
         PictureBoxMonster.Image = My.Resources.王様
         Dim msg1 As String = "よく来た勇者よ！　　　　　　　"
-        Dim msg2 As String = "ドラゴンを倒してこい！　　　　"
+        Dim msg2 As String = "スライムを倒してこい！　　　　"
         Call WriteMessage(msg1, msg2)
         Call RenderMessage()
     End Sub
@@ -323,7 +323,7 @@ Public Class Form1
             PictureBoxMonster.Visible = True
             RichTextBox1.Visible = True
             My.Computer.Audio.Stop()
-            My.Computer.Audio.Play(My.Resources.Castle_Mastering00001, AudioPlayMode.BackgroundLoop)
+            My.Computer.Audio.Play(My.Resources.DQ_Castle_Mastering00001, AudioPlayMode.BackgroundLoop)
         End If
         If SCENE_STATE = MAP_SCENE Then
             PictureBoxMap.Visible = True

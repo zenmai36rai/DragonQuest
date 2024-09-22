@@ -120,8 +120,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Castle.mid" />
-    <Content Include="Castle_Mastering00001.wav" />
+    <Content Include="DQ_Castle.mid" />
+    <Content Include="DQ_Castle_Mastering00001.wav" />
     <Content Include="DQ.mid" />
     <Content Include="DQ_Battle_Mastering00001.wav" />
     <Content Include="DQ_Mastering00001.wav" />
