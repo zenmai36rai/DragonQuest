@@ -47,6 +47,8 @@ Public Class Form1
 
     Private ENEMY_HP = 0
     Private ENEMY_NAME = "スライム"
+    Private ENEMY_EXP = 1
+    Private ENEMY_GOLD = 1
     Private CRITICAL_INT As Integer = 0
     Private DAMAGE_INT As Integer = 0
     Private DAMAGE_STR = "０"
@@ -55,6 +57,7 @@ Public Class Form1
     Private EXP_COUNT = 0
     Private WINNER_FLAG = False
     Private LEVELUP_FLAG = False
+    Private EXP_TABLE() = {0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30}
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DrawMap()
@@ -212,8 +215,8 @@ Public Class Form1
                     Dim msg2 As String = "                             "
                     Call WriteMessage(msg1, msg2)
                     WINNER_FLAG = True
-                    EXP_COUNT += 1
-                    If EXP_COUNT = (HERO_LV * 3) Then
+                    EXP_COUNT += ENEMY_EXP
+                    If EXP_COUNT = EXP_TABLE(HERO_LV) Then
                         LEVELUP_FLAG = True
                     End If
                 End If
@@ -260,7 +263,9 @@ Public Class Form1
         ClickButtons(KEY_UP, SCENE_STATE)
     End Sub
     Private Sub LevelUp()
-        HERO_LV += 1
+        If 10 > HERO_LV Then
+            HERO_LV += 1
+        End If
         My.Computer.Audio.Stop()
         My.Computer.Audio.Play(My.Resources.DQ_LevelUp_Mastering00001, AudioPlayMode.Background)
         Dim msg1 As String = "ゆうしゃはレベルが上がった！　"
