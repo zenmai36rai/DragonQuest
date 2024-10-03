@@ -221,7 +221,7 @@ Public Class Form1
                     Call WriteMessage(msg1, msg2)
                     WINNER_FLAG = True
                     EXP_COUNT += ENEMY_EXP
-                    If EXP_COUNT = EXP_TABLE(HERO_LV) Then
+                    If EXP_COUNT >= EXP_TABLE(HERO_LV) Then
                         LEVELUP_FLAG = True
                     End If
                 End If
