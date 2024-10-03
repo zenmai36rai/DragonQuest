@@ -32,7 +32,8 @@ Public Class Form1
     Private HERO_LV = 1
     Private HERO_HP = 99
     Private HERO_MP = 99
-    Private HERO_ST = 3
+    Private ST_TABLE() = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+    Private HERO_ST = ST_TABLE(HERO_LV)
     Private HERO_DF = 3
 
     Private HP_STR = "００"
@@ -57,7 +58,7 @@ Public Class Form1
     Private EXP_COUNT = 0
     Private WINNER_FLAG = False
     Private LEVELUP_FLAG = False
-    Private EXP_TABLE() = {0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30}
+    Private EXP_TABLE() = {0, 3, 8, 15, 23, 31, 40, 52, 65, 80, 99}
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DrawMap()
@@ -94,18 +95,22 @@ Public Class Form1
         If m <= 1 Then
             ENEMY_HP = 4
             ENEMY_NAME = "スライム"
+            ENEMY_EXP = 1
             PictureBoxMonster.Image = My.Resources.スライム
         ElseIf m = 2 Then
             ENEMY_HP = 7
             ENEMY_NAME = "まどうし"
+            ENEMY_EXP = 2
             PictureBoxMonster.Image = My.Resources.まどうし
         ElseIf m = 3 Then
             ENEMY_HP = 9
             ENEMY_NAME = "がいこつ"
+            ENEMY_EXP = 3
             PictureBoxMonster.Image = My.Resources.がいこつ
         Else
             ENEMY_HP = 22
             ENEMY_NAME = "ドラゴン"
+            ENEMY_EXP = 5
             PictureBoxMonster.Image = My.Resources.ドラゴン
         End If
         Dim next_monster = Rnd(9) * 7
