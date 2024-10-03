@@ -57,7 +57,7 @@ Public Class Form1
     Private MONSTER_ID = 1
     Private EXP_COUNT = 0
     Private WINNER_FLAG = False
-    Private LEVELUP_FLAG = False
+    Private LEVELUP_FLAG = 0
     Private EXP_TABLE() = {0, 3, 8, 15, 23, 31, 40, 52, 65, 80, 99}
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -222,7 +222,7 @@ Public Class Form1
                     WINNER_FLAG = True
                     EXP_COUNT += ENEMY_EXP
                     If EXP_COUNT >= EXP_TABLE(HERO_LV) Then
-                        LEVELUP_FLAG = True
+                        LEVELUP_FLAG = 1
                     End If
                 End If
                 DEFFENCE = 0
@@ -268,16 +268,24 @@ Public Class Form1
         ClickButtons(KEY_UP, SCENE_STATE)
     End Sub
     Private Sub LevelUp()
-        If 10 > HERO_LV Then
-            HERO_LV += 1
+        If LEVELUP_FLAG = 1 Then
+            If 10 > HERO_LV Then
+                HERO_LV += 1
+            End If
+            My.Computer.Audio.Stop()
+            My.Computer.Audio.Play(My.Resources.DQ_LevelUp_Mastering00001, AudioPlayMode.Background)
+            Dim msg1 As String = "ゆうしゃはレベルが上がった！　"
+            Dim msg2 As String = "すこし強くなった気がした　　　"
+            Call WriteMessage(msg1, msg2)
+            Call RenderMessage()
+            LEVELUP_FLAG = 2
+        ElseIf LEVELUP_FLAG = 2 Then
+            Dim msg1 As String = "ちからが１ポイント上がった！　"
+            Dim msg2 As String = "あたらしいじゅもんをおぼえた　"
+            Call WriteMessage(msg1, msg2)
+            Call RenderMessage()
+            LEVELUP_FLAG = 0
         End If
-        My.Computer.Audio.Stop()
-        My.Computer.Audio.Play(My.Resources.DQ_LevelUp_Mastering00001, AudioPlayMode.Background)
-        Dim msg1 As String = "ゆうしゃはレベルが上がった！　"
-        Dim msg2 As String = "すこし強くなった気がした　　　"
-        Call WriteMessage(msg1, msg2)
-        Call RenderMessage()
-        LEVELUP_FLAG = False
     End Sub
     Private Sub ClickButtons(ByVal key As Integer, ByVal ss As Integer)
         If ss = CASTLE_SCENE Then
@@ -291,7 +299,7 @@ Public Class Form1
             End If
         End If
         If ss = BATTLE_SCENE Then
-            If key = KEY_A And LEVELUP_FLAG Then
+            If key = KEY_A And LEVELUP_FLAG > 0 Then
                 LevelUp()
             ElseIf key = KEY_A And WINNER_FLAG Then
                 SceneChange(MAP_SCENE)
