@@ -29,6 +29,7 @@ Public Class Form1
     Private HERO_POSITION_Y = -528
 
     'キャラステータス
+    Private HERO_LV = 1
     Private HERO_HP = 99
     Private HERO_MP = 99
     Private HERO_ST = 3
@@ -53,6 +54,7 @@ Public Class Form1
     Private MONSTER_ID = 1
     Private EXP_COUNT = 0
     Private WINNER_FLAG = False
+    Private LEVELUP_FLAG = False
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DrawMap()
@@ -113,7 +115,7 @@ Public Class Form1
         Else
             MONSTER_ID = 4
         End If
-        While ((MONSTER_ID * 2) > EXP_COUNT)
+        While MONSTER_ID > HERO_LV
             MONSTER_ID -= 1
         End While
     End Sub
@@ -211,6 +213,9 @@ Public Class Form1
                     Call WriteMessage(msg1, msg2)
                     WINNER_FLAG = True
                     EXP_COUNT += 1
+                    If EXP_COUNT = (HERO_LV * 3) Then
+                        LEVELUP_FLAG = True
+                    End If
                 End If
                 DEFFENCE = 0
                 Exit Sub
@@ -254,6 +259,16 @@ Public Class Form1
     Private Sub ButtonU_Click(sender As Object, e As EventArgs) Handles ButtonU.Click
         ClickButtons(KEY_UP, SCENE_STATE)
     End Sub
+    Private Sub LevelUp()
+        HERO_LV += 1
+        My.Computer.Audio.Stop()
+        My.Computer.Audio.Play(My.Resources.DQ_LevelUp_Mastering00001, AudioPlayMode.Background)
+        Dim msg1 As String = "ゆうしゃはレベルが上がった！　"
+        Dim msg2 As String = "すこし強くなった気がした　　　"
+        Call WriteMessage(msg1, msg2)
+        Call RenderMessage()
+        LEVELUP_FLAG = False
+    End Sub
     Private Sub ClickButtons(ByVal key As Integer, ByVal ss As Integer)
         If ss = CASTLE_SCENE Then
             If key = KEY_A Then
@@ -266,28 +281,29 @@ Public Class Form1
             End If
         End If
         If ss = BATTLE_SCENE Then
-            If key = KEY_A And WINNER_FLAG Then
+            If key = KEY_A And LEVELUP_FLAG Then
+                LevelUp()
+            ElseIf key = KEY_A And WINNER_FLAG Then
                 SceneChange(MAP_SCENE)
-            End If
-            If key = KEY_A Then
+            ElseIf key = KEY_A Then
                 BattleTurn(CURSOR_POS)
             End If
-            If key = KEY_UP Then
-                If CURSOR_POS > 0 Then
-                    CURSOR_POS = CURSOR_POS - 1
-                Else
-                    CURSOR_POS = 3
-                End If
-            End If
-            If key = KEY_DOWN Then
-                If CURSOR_POS < 3 Then
-                    CURSOR_POS = CURSOR_POS + 1
-                Else
-                    CURSOR_POS = 0
-                End If
-            End If
-            Call RenderMessage()
         End If
+        If key = KEY_UP Then
+            If CURSOR_POS > 0 Then
+                CURSOR_POS = CURSOR_POS - 1
+            Else
+                CURSOR_POS = 3
+            End If
+        End If
+        If key = KEY_DOWN Then
+            If CURSOR_POS < 3 Then
+                CURSOR_POS = CURSOR_POS + 1
+            Else
+                CURSOR_POS = 0
+            End If
+        End If
+        Call RenderMessage()
         If ss = MAP_SCENE Then
             If key = KEY_DOWN Then
                 HERO_POSITION_Y -= 16
